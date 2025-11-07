@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Activities - Hidden Gems</title>
+<style>
+:root {
+--bg-color: #f9f6f1;
+--text-color: #2d2d2d;
+--accent-color: #1e3a5f;
+--card-bg: #ffffff;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: "Inter", sans-serif;
+background-color: var(--bg-color);
+color: var(--text-color);
+line-height: 1.6;
+}
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.5rem 4rem;
+}
+header h1 {
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--accent-color);
+}
+nav a {
+margin-left: 2rem;
+text-decoration: none;
+color: var(--text-color);
+font-weight: 500;
+}
+nav a:hover {
+color: var(--accent-color);
+}
+main {
+max-width: 1400px;
+margin: 0 auto;
+padding: 2rem 4rem 4rem;
+}
+.page-title {
+text-align: center;
+margin-bottom: 2rem;
+}
+.page-title h2 {
+font-size: 2.5rem;
+color: var(--accent-color);
+margin-bottom: 0.5rem;
+}
+.page-title p {
+font-size: 1.1rem;
+color: #555;
+}
+.search-section {
+margin-bottom: 2rem;
+}
+.search-bar {
+width: 100%;
+padding: 1rem 1.5rem;
+font-size: 1rem;
+border: 2px solid rgba(30, 58, 95, 0.2);
+border-radius: 8px;
+background-color: var(--card-bg);
+font-family: "Inter", sans-serif;
+transition: border-color 0.3s ease;
+}
+.search-bar:focus {
+outline: none;
+border-color: var(--accent-color);
+}
+.categories {
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+margin-bottom: 3rem;
+justify-content: center;
+}
+.category-btn {
+padding: 0.7rem 1.5rem;
+background-color: var(--card-bg);
+border: 2px solid rgba(30, 58, 95, 0.2);
+border-radius: 25px;
+font-size: 0.95rem;
+font-weight: 500;
+color: var(--text-color);
+cursor: pointer;
+transition: all 0.3s ease;
+font-family: "Inter", sans-serif;
+}
+.category-btn:hover {
+border-color: var(--accent-color);
+color: var(--accent-color);
+}
+.category-btn.active {
+background-color: var(--accent-color);
+color: white;
+border-color: var(--accent-color);
+}
+.activities-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 2rem;
+}
+.activity-card {
+background-color: var(--card-bg);
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+transition: transform 0.2s ease;
+text-decoration: none;
+color: inherit;
+display: block;
+}
+.activity-card:hover {
+transform: translateY(-4px);
+}
+.activity-image {
+width: 100%;
+height: 200px;
+object-fit: cover;
+background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 100%);
+}
+.activity-content {
+padding: 1.2rem;
+}
+.activity-content h3 {
+font-size: 1.2rem;
+color: var(--accent-color);
+margin-bottom: 0.5rem;
+font-weight: 600;
+}
+.activity-content p {
+font-size: 0.95rem;
+color: #555;
+line-height: 1.5;
+margin-bottom: 0.8rem;
+}
+.activity-price {
+display: inline-block;
+padding: 0.4rem 1rem;
+background-color: var(--bg-color);
+color: var(--accent-color);
+font-size: 0.9rem;
+border-radius: 20px;
+font-weight: 600;
+}
+.activity-price.free {
+background-color: #d4edda;
+color: #155724;
+}
+@media (max-width: 768px) {
+header {
+flex-direction: column;
+align-items: flex-start;
+padding: 1.5rem;
+}
+nav {
+margin-top: 0.5rem;
+}
+nav a {
+margin-left: 0;
+margin-right: 1.5rem;
+}
+main {
+padding: 1.5rem;
+}
+.page-title h2 {
+font-size: 2rem;
+}
+.activities-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Hidden Gems</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="hub.html">Plan Your Trip</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+
+<main>
+<div class="page-title">
+<h2>Activities & Events</h2>
+<p>Discover what's happening around town</p>
+</div>
+
+<div class="search-section">
+<input type="text" class="search-bar" placeholder="Search activities...">
+</div>
+
+<div class="categories">
+<button class="category-btn active">All</button>
+<button class="category-btn">Food & Drink</button>
+<button class="category-btn">Tours</button>
+<button class="category-btn">Classes</button>
+<button class="category-btn">Markets</button>
+<button class="category-btn">Events</button>
+<button class="category-btn">Nightlife</button>
+</div>
+
+<div class="activities-grid">
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600" alt="Flea Market" class="activity-image">
+<div class="activity-content">
+<h3>Sunday Flea Market</h3>
+<p>Every Sunday from 8 AM to 12 PM. Vintage treasures, handmade crafts, and local goods.</p>
+<span class="activity-price free">FREE</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600" alt="Wine Tasting" class="activity-image">
+<div class="activity-content">
+<h3>Wine Cellar Tour</h3>
+<p>Sample regional wines in historic underground cellars with an expert sommelier.</p>
+<span class="activity-price">€25</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600" alt="Food Tour" class="activity-image">
+<div class="activity-content">
+<h3>Local Food Walking Tour</h3>
+<p>Taste authentic dishes at family-run restaurants and hidden local eateries.</p>
+<span class="activity-price">€35</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1540479859555-17af45c78602?w=600" alt="Dance Class" class="activity-image">
+<div class="activity-content">
+<h3>Dance Class at River Café</h3>
+<p>Every Thursday at 7 PM. Swing dance lessons in a cozy café atmosphere.</p>
+<span class="activity-price free">FREE</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600" alt="Bike Tour" class="activity-image">
+<div class="activity-content">
+<h3>Riverside Bike Tour</h3>
+<p>Cycle through scenic trails and discover hidden corners of the old town.</p>
+<span class="activity-price">€20</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600" alt="Live Music" class="activity-image">
+<div class="activity-content">
+<h3>Jazz Night at The Cellar</h3>
+<p>Every Friday and Saturday. Local jazz bands perform in an intimate underground venue.</p>
+<span class="activity-price">€10</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?w=600" alt="Cooking Class" class="activity-image">
+<div class="activity-content">
+<h3>Traditional Cooking Workshop</h3>
+<p>Learn to make local dishes from a chef in a historic kitchen. Includes meal.</p>
+<span class="activity-price">€45</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1543007631-283050bb3e8c?w=600" alt="Trivia Night" class="activity-image">
+<div class="activity-content">
+<h3>Pub Quiz at The Oak</h3>
+<p>Every Tuesday at 8 PM. Test your knowledge and meet locals over drinks.</p>
+<span class="activity-price free">FREE</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Sunrise Hike" class="activity-image">
+<div class="activity-content">
+<h3>Sunrise Castle Hill Hike</h3>
+<p>Saturday mornings at 6 AM. Watch the sunrise from the hilltop fortress.</p>
+<span class="activity-price free">FREE</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600" alt="Art Workshop" class="activity-image">
+<div class="activity-content">
+<h3>Watercolor Workshop</h3>
+<p>Sunday afternoons. Paint local landscapes with a professional artist in the park.</p>
+<span class="activity-price">€30</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600" alt="Poetry Reading" class="activity-image">
+<div class="activity-content">
+<h3>Open Mic Poetry Night</h3>
+<p>First Monday of every month at The Library Café. Share or just listen.</p>
+<span class="activity-price free">FREE</span>
+</div>
+</a>
+
+<a href="#" class="activity-card">
+<img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600" alt="Yoga" class="activity-image">
+<div class="activity-content">
+<h3>Riverside Yoga</h3>
+<p>Wednesday and Sunday mornings at 8 AM. Outdoor yoga by the water.</p>
+<span class="activity-price">€12</span>
+</div>
+</a>
+</div>
+</main>
+
+</body>
+</html>
