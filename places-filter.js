@@ -11,9 +11,9 @@ function filterSelection(c) {
       console.log("Card classes:", x[i].className);
       w3RemoveClass(x[i], "show");
       
-      console.log("After removing show, classes are:", x[i].className); // ADD THIS
+      console.log("After removing show, classes are:", x[i].className); 
       console.log("Looking for:", c); // ADD THIS
-      console.log("Index result:", x[i].className.indexOf(c)); // ADD THIS
+      console.log("Index result:", x[i].className.indexOf(c)); 
       
       if (x[i].className.indexOf(c) > -1) {
         console.log("Showing card:", i);
