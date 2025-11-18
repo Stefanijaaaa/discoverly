@@ -118,7 +118,6 @@ box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 transition: transform 0.2s ease;
 text-decoration: none;
 color: inherit;
-display: block;
 }
 .activity-card:hover {
 transform: translateY(-4px);
@@ -156,6 +155,11 @@ font-weight: 600;
 .activity-price.free {
 background-color: #d4edda;
 color: #155724;
+}.filterDiv {
+  display: none !important;
+}
+.show {
+  display: block !important;
 }
 @media (max-width: 768px) {
 header {
@@ -199,21 +203,21 @@ grid-template-columns: 1fr;
 </div>
 
 <div class="search-section">
-<input type="text" class="search-bar" placeholder="Search activities...">
+<input type="text" class="search-bar" placeholder="Search activities..." id="search-bar" onkeyup="search()">
 </div>
 
-<div class="categories">
-<button class="category-btn active">All</button>
-<button class="category-btn">Food & Drink</button>
-<button class="category-btn">Tours</button>
-<button class="category-btn">Classes</button>
-<button class="category-btn">Markets</button>
-<button class="category-btn">Events</button>
-<button class="category-btn">Nightlife</button>
+<div class="categories" id="myBtnContainer">
+<button class="category-btn active" onclick="filterSelection('all')">All</button>
+<button class="category-btn" onclick="filterSelection('food')">Food & Drink</button>
+<button class="category-btn" onclick="filterSelection('tours')">Tours</button>
+<button class="category-btn" onclick="filterSelection('classes')">Classes</button>
+<button class="category-btn" onclick="filterSelection('markets')">Markets</button>
+<button class="category-btn" onclick="filterSelection('events')">Events</button>
+<button class="category-btn" onclick="filterSelection('nightlife')">Nightlife</button>
 </div>
 
 <div class="activities-grid">
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv markets show">
 <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600" alt="Flea Market" class="activity-image">
 <div class="activity-content">
 <h3>Sunday Flea Market</h3>
@@ -222,7 +226,8 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+
+<a href="#" class="activity-card filterDiv tours show">
 <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600" alt="Wine Tasting" class="activity-image">
 <div class="activity-content">
 <h3>Wine Cellar Tour</h3>
@@ -231,7 +236,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv activity show">
 <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600" alt="Food Tour" class="activity-image">
 <div class="activity-content">
 <h3>Local Food Walking Tour</h3>
@@ -240,7 +245,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv events show">
 <img src="https://images.unsplash.com/photo-1540479859555-17af45c78602?w=600" alt="Dance Class" class="activity-image">
 <div class="activity-content">
 <h3>Dance Class at River Café</h3>
@@ -249,7 +254,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv tours show">
 <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600" alt="Bike Tour" class="activity-image">
 <div class="activity-content">
 <h3>Riverside Bike Tour</h3>
@@ -258,7 +263,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv nightlife show">
 <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600" alt="Live Music" class="activity-image">
 <div class="activity-content">
 <h3>Jazz Night at The Cellar</h3>
@@ -267,7 +272,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv classes show">
 <img src="https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?w=600" alt="Cooking Class" class="activity-image">
 <div class="activity-content">
 <h3>Traditional Cooking Workshop</h3>
@@ -276,7 +281,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv events show">
 <img src="https://images.unsplash.com/photo-1543007631-283050bb3e8c?w=600" alt="Trivia Night" class="activity-image">
 <div class="activity-content">
 <h3>Pub Quiz at The Oak</h3>
@@ -285,7 +290,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv tours show">
 <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Sunrise Hike" class="activity-image">
 <div class="activity-content">
 <h3>Sunrise Castle Hill Hike</h3>
@@ -294,7 +299,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv classes show">
 <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600" alt="Art Workshop" class="activity-image">
 <div class="activity-content">
 <h3>Watercolor Workshop</h3>
@@ -303,7 +308,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv nightlife show">
 <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600" alt="Poetry Reading" class="activity-image">
 <div class="activity-content">
 <h3>Open Mic Poetry Night</h3>
@@ -312,7 +317,7 @@ grid-template-columns: 1fr;
 </div>
 </a>
 
-<a href="#" class="activity-card">
+<a href="#" class="activity-card filterDiv events show">
 <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600" alt="Yoga" class="activity-image">
 <div class="activity-content">
 <h3>Riverside Yoga</h3>
@@ -322,6 +327,6 @@ grid-template-columns: 1fr;
 </a>
 </div>
 </main>
-
+<script src="filter-search.js"></script>
 </body>
 </html>
