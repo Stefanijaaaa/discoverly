@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Plan Your Trip - Hidden Gems</title>
+<title>Plan Your Trip - Discoverly</title>
 <style>
 :root {
 --bg-color: #f9f6f1;
@@ -148,7 +148,7 @@ flex: 0 0 240px;
 </head>
 <body>
 <header>
-<h1>Hidden Gems</h1>
+<h1>Discoverly</h1>
 <nav>
 <a href="login.html">Log In</a>
 <a href="index.html">Home</a>
@@ -192,9 +192,17 @@ flex: 0 0 240px;
 </section>
 
 <section class="section">
-<h3 class="section-title">Places to Visit</h3>
+<div style="display: flex; justify-content: space-between; align-items: center; padding-left: 0.5rem; padding-right: 0.5rem; margin-bottom: 1rem;">
+<a href="places.html" style="text-decoration: none;">
+<h3 class="section-title" style="margin-bottom: 0;">Places to Visit</h3>
+</a>
+<a href="places.html" style="text-decoration: none; color: var(--accent-color); font-weight: 600; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease;">
+See All 
+<span style="font-size: 1.2rem;">→</span>
+</a>
+</div>
 <div class="scroll-container">
-<a href="category-restaurants.html" class="card">
+<a href="places.html?filter=restaurants" class="card">
 <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600" alt="Restaurants" class="card-image">
 <div class="card-content">
 <h3>Restaurants</h3>
@@ -202,7 +210,7 @@ flex: 0 0 240px;
 </div>
 </a>
 
-<a href="category-cafes.html" class="card">
+<a href="places.html?filter=cafes" class="card">
 <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600" alt="Cafés" class="card-image">
 <div class="card-content">
 <h3>Cafés</h3>
@@ -210,7 +218,7 @@ flex: 0 0 240px;
 </div>
 </a>
 
-<a href="category-historic.html" class="card">
+<a href="places.html?filter=historic-sights" class="card">
 <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600" alt="Historic Sights" class="card-image">
 <div class="card-content">
 <h3>Historic Sights</h3>
@@ -218,7 +226,7 @@ flex: 0 0 240px;
 </div>
 </a>
 
-<a href="category-museums.html" class="card">
+<a href="places.html?filter=museums" class="card">
 <img src="https://images.unsplash.com/photo-1565098772267-60af42b81ef2?w=600" alt="Museums" class="card-image">
 <div class="card-content">
 <h3>Museums</h3>
@@ -226,7 +234,7 @@ flex: 0 0 240px;
 </div>
 </a>
 
-<a href="category-parks.html" class="card">
+<a href="places.html?filter=parks" class="card">
 <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Parks" class="card-image">
 <div class="card-content">
 <h3>Parks</h3>
@@ -238,7 +246,9 @@ flex: 0 0 240px;
 
 <section class="section">
 <div style="display: flex; justify-content: space-between; align-items: center; padding-left: 0.5rem; padding-right: 0.5rem; margin-bottom: 1rem;">
+<a href="activities.html" style="text-decoration: none;">
 <h3 class="section-title" style="margin-bottom: 0;">Activities</h3>
+</a>
 <a href="activities.html" style="text-decoration: none; color: var(--accent-color); font-weight: 600; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease;">
 See All 
 <span style="font-size: 1.2rem;">→</span>
@@ -279,6 +289,6 @@ See All
 </div>
 </section>
 </main>
-
+<script src="filter-search.js"></script>
 </body>
 </html>

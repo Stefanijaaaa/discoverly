@@ -42,6 +42,7 @@ for (i = 0; i < arr2.length; i++) {
 element.className = arr1.join(" ");
 }
 
+
 // Add active class to the current control button (highlight it)
 var btnContainer = document.getElementById("myBtnContainer");
 var btns = btnContainer.getElementsByClassName("category-btn");
@@ -71,4 +72,32 @@ function search(){
         }
     }
   }
+}
+
+//show filtered page after pressing on a category from page1.html
+
+//getting the URL query param
+const url = new URL(window.location.href)
+const currentFilter = url.searchParams.get('filter')
+
+// console.log("Full URL:", window.location.href);
+// console.log("Current filter value:", currentFilter);
+
+//we only filter stuff if a filter is provided
+if (currentFilter != null){
+
+  //make the correct button light up accordingly..
+  var btnContainer = document.getElementById("myBtnContainer");
+  var btns = btnContainer.getElementsByClassName("category-btn");
+  for (var i = 0; i < btns.length; i++) {
+    var buttonCategory = btns[i].getAttribute('data-category');
+    if (buttonCategory == currentFilter){
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      btns[i].className += " active";
+    }
+  }
+
+  filterSelection(currentFilter)
+
 }
