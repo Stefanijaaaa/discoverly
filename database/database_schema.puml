@@ -1,0 +1,53 @@
+@startuml database
+skinparam classAttributeIconSize 0
+!pragma ratio 0.70
+hide circle
+skinparam linetype ortho
+
+
+entity User {
+    userID: integer() <<PK>>
+    ---
+    username: varchar(50)
+    email: varchar(100)
+    password: varchar(50)
+}
+
+entity Place {
+    placeId: integer() <<PK>>
+    reviewID: integer() <<FK>>
+    ---
+    type: varchar(50)
+    name: varchar(50)
+    location: integer() 
+    about: varchar (900)
+    address: varchar(50)
+    hours: varchar(50)
+    price: integer()
+    contact: char(9)
+    website: varchar(50)
+    accessibility: varchar(50)
+    duration: integer()
+    photos: varchar(500)
+}
+
+entity Review{
+    reviewID: integer() <<PK>>
+    userID: integer() <<FK>>
+    placeID: integer() <<FK>>
+    ---
+    comment: varchar(120)
+    rating: integer()
+}
+
+entity Wishlist{
+    userID: integer() <<PK, FK>>
+    placeID: integer() <<PK, FK>>
+    ---
+}
+
+User ||--o{ Review : "writes"
+Place ||--o{ Review : "receives"
+User ||--o{ Wishlist : "saves to"
+Wishlist }o--|| Place : "is saved to"
+
