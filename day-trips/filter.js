@@ -17,15 +17,13 @@ function showDay(dayNumber){
     days.className += " active";
 }
 
+//trying out lj coordinates
+var map = L.map('map').setView([46.0569, 14.5058], 13); 
 
-var map = L.map('map').setView([46.0569, 14.5058], 13); // These are Ljubljana coordinates, adjust as needed
-
-// Add the tile layer (the actual map images)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
-// Add a marker for Castle Hill
 L.marker([46.0569, 14.5058]).addTo(map)
     .bindPopup('Castle Hill');
 
