@@ -330,17 +330,54 @@ crossorigin=""></script>
 </main>
 <script>
 //trying out lj coordinates
-var map = L.map('map').setView([46.0569, 14.5058], 13); 
+var locations = [
+    {coords: [46.0489, 14.5081], name: "Ljubljana Castle"},
+    {coords: [46.0514, 14.5060], name: "Prešeren Square"},
+    {coords: [46.0540, 14.4950], name: "Tivoli Park"},
+    {coords: [46.0525, 14.5115], name: "Dragon Bridge"},
+    {coords: [46.0575, 14.5180], name: "Metelkova"},
+    {coords: [46.0480, 14.5270], name: "Ljubljana Zoo"},
+    {coords: [46.0700, 14.4900], name: "Šiška District"},
+    {coords: [46.0520, 14.5075], name: "Central Market"},
+    {coords: [46.0490, 14.5050], name: "Congress Square"}
+];
+
+var map = L.map('map').setView([46.0569, 14.5058], 13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
-L.marker([46.0569, 14.5058]).addTo(map)
-    .bindPopup('Castle Hill');
+//setting up the pop ups and numbering them
+
+locations.forEach(function(location, index) {
+    var number = index + 1;
+    
+    var customIcon = L.divIcon({
+        className: 'custom-marker',
+        html: '<div class="marker-pin"><span>' + number + '</span></div>',
+        iconSize: [30, 42],
+        iconAnchor: [15, 42]
+    });
+    
+    L.marker(location.coords, {icon: customIcon})
+        .addTo(map)
+        .bindPopup('<b>' + number + '. ' + location.name + '</b>');
+});
+
+//extracting and drawing the line
+
+var routeCoords = locations.map(function(loc) {
+    return loc.coords;
+});
+
+L.polyline(routeCoords, {
+    color: '#1e3a5f',
+    weight: 3,
+    opacity: 0.7
+}).addTo(map);
 
 // https://leafletjs.com/examples/quick-start/ -> tutorial for the map, will need to add exact locations 
 </script>
-
 </body>
 </html>
