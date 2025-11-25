@@ -132,6 +132,14 @@ transition: background-color 0.3s ease;
 .btn-primary:hover {
 background-color: #25497a;
 }
+header h1 a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+header h1 a:hover {
+  color: var(--accent-color); 
+}
 @media (max-width: 768px) {
 header {
 flex-direction: column;
@@ -162,10 +170,9 @@ grid-template-columns: 1fr;
 </head>
 <body>
 <header>
-<h1>Discoverly</h1>
+<h1><a href="page1.html">Discoverly</a></h1>
 <nav>
 <a href="login.html">Log In</a>
-<a href="index.html">Home</a>
 <a href="page1.html">Discover</a>
 </nav>
 </header>

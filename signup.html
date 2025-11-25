@@ -160,6 +160,14 @@ font-weight: 600;
 .login-link a:hover {
 text-decoration: underline;
 }
+header h1 a {
+text-decoration: none;
+color: var(--accent-color);
+}
+
+header h1 a:hover {
+color: var(--accent-color); 
+}
 @media (max-width: 768px) {
 header {
 flex-direction: column;
@@ -184,10 +192,9 @@ font-size: 1.5rem;
 </head>
 <body>
 <header>
-<h1>Discoverly</h1>
+<h1><a href="page1.html">Discoverly</a></h1>
 <nav>
 <a href="login.html">Log In</a>
-<a href="index.html">Home</a>
 <a href="about.html">About</a>
 </nav>
 </header>

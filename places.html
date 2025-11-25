@@ -160,6 +160,14 @@ font-weight: 500;
 .show {
   display: block;
 }
+header h1 a {
+text-decoration: none;
+color: var(--accent-color);
+}
+
+header h1 a:hover {
+color: var(--accent-color); 
+}
 
 @media (max-width: 768px) {
 header {
@@ -190,10 +198,9 @@ grid-template-columns: 1fr;
 </head>
 <body>
 <header>
-<h1>Discoverly</h1>
+<h1><a href="page1.html">Discoverly</a></h1>
 <nav>
 <a href="login.html">Log In</a>
-<a href="page1.html">Home</a>
 <a href="about.html">About</a>
 </nav>
 </header>
@@ -210,15 +217,12 @@ grid-template-columns: 1fr;
 
 <div class="categories" id="myBtnContainer">
 <button class="category-btn active" onclick="filterSelection('all')"> Show all</button>
-<button class="category-btn" onclick="filterSelection('restaurants')">Restaurants</button>
-<button class="category-btn" onclick="filterSelection('cafes')">Cafes</button>
-<button class="category-btn" onclick="filterSelection('historic-sights')">Historic Sights</button>
-<button class="category-btn" onclick="filterSelection('museums')">Museums</button>
-<button class="category-btn" onclick="filterSelection('parks')">Parks</button>
+<button class="category-btn" data-category="restaurants" onclick="filterSelection('restaurants')">Restaurants</button>
+<button class="category-btn" data-category="cafes" onclick="filterSelection('cafes')">Cafes</button>
+<button class="category-btn" data-category="historic-sights" onclick="filterSelection('historic-sights')">Historic Sights</button>
+<button class="category-btn" data-category="museums" onclick="filterSelection('museums')">Museums</button>
+<button class="category-btn" data-category="parks "onclick="filterSelection('parks')">Parks</button>
 </div>
-
-  
-
 
 <div class="places-grid">
 <!-- Restaurants -->
@@ -278,7 +282,7 @@ grid-template-columns: 1fr;
 </a>
 
 <!-- Historic Sights -->
-<a href="place-detail.html" class="place-card filterDiv historic-sights show" data-category="historic">
+<a href="./pages-layout/page_layout.html" class="place-card filterDiv historic-sights show" data-category="historic">
 <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600" alt="Castle" class="place-image">
 <div class="place-content">
 <h3>Castle Hill</h3>

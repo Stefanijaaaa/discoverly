@@ -347,6 +347,14 @@ font-size: 0.9rem;
 .route-map {
 margin-top: 1.5rem;
 }
+header h1 a {
+text-decoration: none;
+color: var(--accent-color);
+}
+
+header h1 a:hover {
+color: var(--accent-color); 
+}
 @media (max-width: 768px) {
 header {
 flex-direction: column;
@@ -379,9 +387,8 @@ grid-template-columns: 1fr;
 </head>
 <body>
 <header>
-<h1>Discoverly</h1>
+<h1><a href="page1.html">Discoverly</a></h1>
 <nav>
-<a href="index.html">Home</a>
 <a href="hub.html">Plan Your Trip</a>
 <a href="about.html">About</a>
 <a href="#">Log Out</a>

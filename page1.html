@@ -121,6 +121,14 @@ font-size: 0.95rem;
 color: #555;
 line-height: 1.5;
 }
+header h1 a {
+text-decoration: none;
+color: var(--accent-color);
+}
+
+header h1 a:hover {
+color: var(--accent-color); 
+}
 @media (max-width: 768px) {
 header {
 flex-direction: column;
@@ -148,10 +156,9 @@ flex: 0 0 240px;
 </head>
 <body>
 <header>
-<h1>Discoverly</h1>
+<h1><a href="index.html">Discoverly</a></h1>
 <nav>
 <a href="login.html">Log In</a>
-<a href="index.html">Home</a>
 <a href="about.html">About</a>
 </nav>
 </header>
@@ -165,7 +172,7 @@ flex: 0 0 240px;
 <section class="section">
 <h3 class="section-title">Day Trips</h3>
 <div class="scroll-container">
-<a href="1-day.html" class="card">
+<a href="../day-trips/1_day_trip.html" class="card">
 <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600" alt="1 Day Trip" class="card-image">
 <div class="card-content">
 <h3>1-Day Trip</h3>
@@ -173,7 +180,7 @@ flex: 0 0 240px;
 </div>
 </a>
 
-<a href="3-day.html" class="card">
+<a href="../day-trips/3_day_trip.html" class="card">
 <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600" alt="3 Day Trip" class="card-image">
 <div class="card-content">
 <h3>3-Day Adventure</h3>
@@ -181,7 +188,7 @@ flex: 0 0 240px;
 </div>
 </a>
 
-<a href="5-day.html" class="card">
+<a href="../day-trips/5_day_trip.html" class="card">
 <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="5 Day Trip" class="card-image">
 <div class="card-content">
 <h3>5-Day Deep Dive</h3>
