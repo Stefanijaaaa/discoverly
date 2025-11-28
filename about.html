@@ -1,230 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About - Discoverly</title>
-<style>
-:root {
---bg-color: #f9f6f1;
---text-color: #2d2d2d;
---accent-color: #1e3a5f;
---card-bg: #ffffff;
-}
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-body {
-font-family: "Inter", sans-serif;
-background-color: var(--bg-color);
-color: var(--text-color);
-line-height: 1.6;
-}
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem 4rem;
-}
-header h1 {
-font-size: 1.5rem;
-font-weight: 700;
-color: var(--accent-color);
-}
-nav a {
-margin-left: 2rem;
-text-decoration: none;
-color: var(--text-color);
-font-weight: 500;
-}
-nav a:hover {
-color: var(--accent-color);
-}
-main {
-max-width: 900px;
-margin: 3rem auto;
-padding: 0 2rem;
-}
-.hero-section {
-text-align: center;
-margin-bottom: 4rem;
-}
-.hero-section h2 {
-font-size: 2.5rem;
-color: var(--accent-color);
-margin-bottom: 1rem;
-}
-.hero-section p {
-font-size: 1.2rem;
-color: #555;
-max-width: 700px;
-margin: 0 auto;
-}
-.content-section {
-background-color: var(--card-bg);
-border-radius: 12px;
-padding: 3rem;
-box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-margin-bottom: 2rem;
-}
-.content-section h3 {
-font-size: 1.8rem;
-color: var(--accent-color);
-margin-bottom: 1rem;
-}
-.content-section p {
-color: #555;
-font-size: 1.05rem;
-line-height: 1.8;
-margin-bottom: 1rem;
-}
-.features {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 2rem;
-margin-top: 3rem;
-}
-.feature-box {
-background-color: var(--bg-color);
-padding: 2rem;
-border-radius: 12px;
-text-align: center;
-}
-.feature-box h4 {
-font-size: 1.3rem;
-color: var(--accent-color);
-margin-bottom: 0.8rem;
-}
-.feature-box p {
-font-size: 0.95rem;
-color: #666;
-}
-.cta-section {
-text-align: center;
-margin-top: 4rem;
-padding: 3rem;
-background-color: var(--card-bg);
-border-radius: 12px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-.cta-section h3 {
-font-size: 2rem;
-color: var(--accent-color);
-margin-bottom: 1rem;
-}
-.cta-section p {
-font-size: 1.1rem;
-color: #555;
-margin-bottom: 2rem;
-}
-.btn-primary {
-display: inline-block;
-padding: 1rem 2rem;
-background-color: var(--accent-color);
-color: white;
-text-decoration: none;
-border-radius: 8px;
-font-weight: 600;
-transition: background-color 0.3s ease;
-}
-.btn-primary:hover {
-background-color: #25497a;
-}
-header h1 a {
-  text-decoration: none;
-  color: var(--accent-color);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Discoverly</title>
 
-header h1 a:hover {
-  color: var(--accent-color); 
-}
-@media (max-width: 768px) {
-header {
-flex-direction: column;
-align-items: flex-start;
-padding: 1.5rem;
-}
-nav {
-margin-top: 0.5rem;
-}
-nav a {
-margin-left: 0;
-margin-right: 1.5rem;
-}
-main {
-padding: 0 1.5rem;
-}
-.hero-section h2 {
-font-size: 2rem;
-}
-.content-section {
-padding: 2rem;
-}
-.features {
-grid-template-columns: 1fr;
-}
-}
-</style>
+  <!-- Global shared layout -->
+  <link rel="stylesheet" href="pages-layout/base.css">
+
+  <!-- Page-specific styling -->
+  <link rel="stylesheet" href="pages-layout/about.css">
 </head>
+
 <body>
-<header>
-<h1><a href="page1.html">Discoverly</a></h1>
-<nav>
-<a href="login.html">Log In</a>
-<a href="page1.html">Discover</a>
-</nav>
-</header>
+<div class="site-wrapper">
 
-<main>
-<div class="hero-section">
-<h2>About Discoverly</h2>
-<p>Your guide to discovering authentic local experiences beyond the tourist trail</p>
-</div>
+  <header>
+    <h1><a href="page1.html">Discoverly</a></h1>
+    <nav>
+      <a href="login.html">Log In</a>
+      <a href="page1.html">Discover</a>
+    </nav>
+  </header>
 
-<div class="content-section">
-<h3>Our Story</h3>
-<p>We created Discoverly because we believe travel should be about more than just checking off famous landmarks. The best memories come from stumbling upon a cozy café tucked in a medieval cellar, discovering a Sunday flea market filled with local treasures, or joining an impromptu dance class at a neighborhood venue.</p>
-<p>But finding these authentic experiences shouldn't require hours of scrolling through TikTok, Instagram, and Facebook groups. That's why we built a platform that brings all the best local spots and events together in one place.</p>
-</div>
+  <main>
+    <section class="hero-section">
+      <h2>About Discoverly</h2>
+      <p>Your guide to discovering authentic local experiences beyond the tourist trail</p>
+    </section>
 
-<div class="content-section">
-<h3>What We Offer</h3>
-<div class="features">
-<div class="feature-box">
-<h4>Curated Itineraries</h4>
-<p>Ready-made trip plans for 1, 3, or 5 days that show you the best of the town</p>
-</div>
-<div class="feature-box">
-<h4>Local Favorites</h4>
-<p>Restaurants, cafés, museums, parks, and historic sites that locals actually visit</p>
-</div>
-<div class="feature-box">
-<h4>Hidden Events</h4>
-<p>Weekly markets, pop-up events, and activities that tourists usually miss</p>
-</div>
-<div class="feature-box">
-<h4>Community Reviews</h4>
-<p>Real recommendations from travelers who've been there</p>
-</div>
-</div>
-</div>
+    <section class="content-section">
+      <h3>Our Story</h3>
+      <p>We created Discoverly because we believe travel should be about more than just checking off famous landmarks. The best memories come from stumbling upon a cozy café tucked in a medieval cellar, discovering a Sunday flea market filled with local treasures, or joining an impromptu dance class at a neighborhood venue.</p>
+      <p>But finding these authentic experiences shouldn't require hours of scrolling through TikTok, Instagram, and Facebook groups. That's why we built a platform that brings all the best local spots and events together in one place.</p>
+    </section>
 
-<div class="content-section">
-<h3>Our Mission</h3>
-<p>We're on a mission to bridge the gap between mainstream tourism and authentic local culture. Whether you're a first-time visitor or a curious local looking to rediscover your own town, Discoverly helps you find experiences that make every trip memorable.</p>
-<p>No more scattered information across platforms. No more missing out on the best spots because they weren't well-advertised. Just honest recommendations and easy trip planning in one place.</p>
+    <section class="content-section">
+      <h3>What We Offer</h3>
+
+      <div class="features">
+        <div class="feature-box">
+          <h4>Curated Itineraries</h4>
+          <p>Ready-made trip plans for 1, 3, or 5 days that show you the best of the town</p>
+        </div>
+        <div class="feature-box">
+          <h4>Local Favorites</h4>
+          <p>Restaurants, cafés, museums, parks, and historic sites that locals actually visit</p>
+        </div>
+        <div class="feature-box">
+          <h4>Hidden Events</h4>
+          <p>Weekly markets, pop-up events, and activities that tourists usually miss</p>
+        </div>
+        <div class="feature-box">
+          <h4>Community Reviews</h4>
+          <p>Real recommendations from travelers who've been there</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h3>Our Mission</h3>
+      <p>We're on a mission to bridge the gap between mainstream tourism and authentic local culture. Whether you're a first-time visitor or a curious local looking to rediscover your own town, Discoverly helps you find experiences that make every trip memorable.</p>
+      <p>No more scattered information across platforms. No more missing out on the best spots because they weren't well-advertised. Just honest recommendations and easy trip planning in one place.</p>
+    </section>
+
+    <section class="cta-section">
+      <h3>Ready to Explore?</h3>
+      <p>Start planning your next adventure and discover what makes this place special</p>
+      <a href="hub.html" class="btn-primary">Plan Your Trip</a>
+    </section>
+  </main>
+
 </div>
-
-<div class="cta-section">
-<h3>Ready to Explore?</h3>
-<p>Start planning your next adventure and discover what makes this place special</p>
-<a href="hub.html" class="btn-primary">Plan Your Trip</a>
-<!-- they can plan a trip only if they are logged in, so this will change depending on wether they are logged in or not-->
-<!-- if they are not logged in, its gonna say log in instead of plan your trip :)-->
-</div>="#">About
-</main>
-
 </body>
 </html>

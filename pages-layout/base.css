@@ -1,0 +1,141 @@
+:root {
+    --bg-color: #f9f6f1;
+    --text-color: #2d2d2d;
+    --accent-color: #1e3a5f;
+    --card-bg: #ffffff;
+  }
+  
+  /* Reset & base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  /* Layout: header / main wrapper */
+  
+  .site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  header h1,
+  header .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-color);
+  }
+  
+  /* mobile nav default */
+  
+  nav {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  
+  nav a:hover {
+    color: var(--accent-color);
+  }
+  
+  main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 2.5rem;
+  }
+  
+  /* generic section + cards */
+  
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+  }
+  
+  .cards-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  }
+  
+  .card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+    color: var(--accent-color);
+  }
+  
+  .card p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+    
+  /* tablets */
+  @media (min-width: 768px) {
+    header {
+      padding: 1.25rem 2rem;
+    }
+  
+    main {
+      padding: 2rem 2rem 3rem;
+    }
+  
+    .section-title {
+      font-size: 1.4rem;
+    }
+  
+    .cards-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    header {
+      padding: 1.5rem 4rem;
+    }
+  
+    main {
+      padding: 2.5rem 4rem 3.5rem;
+    }
+  
+    .cards-row {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  

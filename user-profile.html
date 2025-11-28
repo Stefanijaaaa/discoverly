@@ -1,562 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>My Profile - Discoverly</title>
-<style>
-:root {
---bg-color: #f9f6f1;
---text-color: #2d2d2d;
---accent-color: #1e3a5f;
---card-bg: #ffffff;
-}
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-body {
-font-family: "Inter", sans-serif;
-background-color: var(--bg-color);
-color: var(--text-color);
-line-height: 1.6;
-}
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem 4rem;
-}
-header h1 {
-font-size: 1.5rem;
-font-weight: 700;
-color: var(--accent-color);
-}
-nav a {
-margin-left: 2rem;
-text-decoration: none;
-color: var(--text-color);
-font-weight: 500;
-}
-nav a:hover {
-color: var(--accent-color);
-}
-main {
-max-width: 1200px;
-margin: 2rem auto;
-padding: 0 2rem 4rem;
-}
-.profile-header {
-background-color: var(--card-bg);
-border-radius: 12px;
-padding: 3rem;
-box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-margin-bottom: 3rem;
-display: flex;
-align-items: center;
-gap: 2rem;
-}
-.profile-pic {
-width: 120px;
-height: 120px;
-border-radius: 50%;
-background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 100%);
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 3rem;
-color: white;
-font-weight: 700;
-flex-shrink: 0;
-}
-.profile-info h2 {
-font-size: 2rem;
-color: var(--accent-color);
-margin-bottom: 0.5rem;
-}
-.profile-info p {
-color: #666;
-margin-bottom: 1rem;
-}
-.profile-stats {
-display: flex;
-gap: 2rem;
-margin-top: 1rem;
-}
-.stat {
-display: flex;
-flex-direction: column;
-}
-.stat-number {
-font-size: 1.5rem;
-font-weight: 700;
-color: var(--accent-color);
-}
-.stat-label {
-font-size: 0.9rem;
-color: #666;
-}
-.btn-edit {
-padding: 0.7rem 1.5rem;
-background-color: var(--accent-color);
-color: white;
-border: none;
-border-radius: 8px;
-font-weight: 600;
-cursor: pointer;
-margin-top: 1rem;
-transition: background 0.3s ease;
-}
-.btn-edit:hover {
-background-color: #25497a;
-}
-.section {
-margin-bottom: 3rem;
-}
-.section-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 1.5rem;
-}
-.section-title {
-font-size: 1.8rem;
-color: var(--accent-color);
-font-weight: 600;
-}
-.view-all {
-color: var(--accent-color);
-text-decoration: none;
-font-weight: 500;
-}
-.view-all:hover {
-text-decoration: underline;
-}
-.saved-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-gap: 1.5rem;
-}
-.saved-card {
-background-color: var(--card-bg);
-border-radius: 12px;
-overflow: hidden;
-box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-transition: transform 0.2s ease;
-text-decoration: none;
-color: inherit;
-display: block;
-position: relative;
-}
-.saved-card:hover {
-transform: translateY(-4px);
-}
-.saved-image {
-width: 100%;
-height: 150px;
-object-fit: cover;
-background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 100%);
-}
-.saved-content {
-padding: 1rem;
-}
-.saved-content h3 {
-font-size: 1.1rem;
-color: var(--accent-color);
-margin-bottom: 0.3rem;
-font-weight: 600;
-}
-.saved-content p {
-font-size: 0.85rem;
-color: #666;
-}
-.btn-remove {
-position: absolute;
-top: 0.5rem;
-right: 0.5rem;
-background: rgba(255,255,255,0.9);
-border: none;
-width: 30px;
-height: 30px;
-border-radius: 50%;
-cursor: pointer;
-font-size: 1.2rem;
-color: #666;
-transition: all 0.2s ease;
-}
-.btn-remove:hover {
-background: white;
-color: #d32f2f;
-}
-.reviews-list {
-display: flex;
-flex-direction: column;
-gap: 1.5rem;
-}
-.review-card {
-background-color: var(--card-bg);
-border-radius: 12px;
-padding: 1.5rem;
-box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-.review-header {
-display: flex;
-justify-content: space-between;
-align-items: start;
-margin-bottom: 1rem;
-}
-.review-place {
-font-size: 1.2rem;
-font-weight: 600;
-color: var(--accent-color);
-text-decoration: none;
-}
-.review-place:hover {
-text-decoration: underline;
-}
-.review-rating {
-color: #ffa726;
-font-size: 1.1rem;
-}
-.review-text {
-color: #555;
-line-height: 1.6;
-margin-bottom: 0.5rem;
-}
-.review-date {
-font-size: 0.85rem;
-color: #999;
-}
-.empty-state {
-text-align: center;
-padding: 3rem;
-color: #999;
-}
-.empty-state p {
-font-size: 1.1rem;
-margin-bottom: 1rem;
-}
-.route-planner {
-background-color: var(--card-bg);
-border-radius: 12px;
-padding: 2rem;
-box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-.route-instruction {
-color: #666;
-margin-bottom: 1.5rem;
-text-align: center;
-}
-.selected-places {
-display: flex;
-flex-wrap: wrap;
-gap: 0.8rem;
-margin-bottom: 1.5rem;
-justify-content: center;
-}
-.selected-item {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-padding: 0.6rem 1rem;
-background-color: var(--bg-color);
-border: 2px solid var(--accent-color);
-border-radius: 25px;
-color: var(--accent-color);
-font-weight: 500;
-}
-.btn-remove-small {
-background: none;
-border: none;
-color: var(--accent-color);
-font-size: 1.3rem;
-cursor: pointer;
-padding: 0;
-width: 20px;
-height: 20px;
-line-height: 1;
-}
-.btn-remove-small:hover {
-color: #d32f2f;
-}
-.btn-optimize {
-width: 100%;
-padding: 1rem;
-background-color: var(--accent-color);
-color: white;
-border: none;
-border-radius: 8px;
-font-size: 1.1rem;
-font-weight: 600;
-cursor: pointer;
-transition: background 0.3s ease;
-}
-.btn-optimize:hover {
-background-color: #25497a;
-}
-.route-result {
-margin-top: 2rem;
-padding-top: 2rem;
-border-top: 2px solid var(--bg-color);
-}
-.route-result h4 {
-font-size: 1.3rem;
-color: var(--accent-color);
-margin-bottom: 1.5rem;
-text-align: center;
-}
-.route-steps {
-margin-bottom: 2rem;
-}
-.route-step {
-display: flex;
-align-items: center;
-gap: 1rem;
-padding: 1rem;
-background-color: var(--bg-color);
-border-radius: 8px;
-}
-.step-number {
-width: 35px;
-height: 35px;
-background-color: var(--accent-color);
-color: white;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: 700;
-flex-shrink: 0;
-}
-.step-name {
-flex: 1;
-font-weight: 600;
-color: var(--text-color);
-}
-.step-time {
-color: #666;
-font-size: 0.9rem;
-}
-.route-arrow {
-text-align: center;
-padding: 0.5rem;
-color: #666;
-font-size: 0.9rem;
-}
-.route-map {
-margin-top: 1.5rem;
-}
-header h1 a {
-text-decoration: none;
-color: var(--accent-color);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile - Discoverly</title>
 
-header h1 a:hover {
-color: var(--accent-color); 
-}
-@media (max-width: 768px) {
-header {
-flex-direction: column;
-align-items: flex-start;
-padding: 1.5rem;
-}
-nav {
-margin-top: 0.5rem;
-}
-nav a {
-margin-left: 0;
-margin-right: 1.5rem;
-}
-main {
-padding: 0 1.5rem 3rem;
-}
-.profile-header {
-flex-direction: column;
-text-align: center;
-padding: 2rem;
-}
-.profile-stats {
-justify-content: center;
-}
-.saved-grid {
-grid-template-columns: 1fr;
-}
-}
-</style>
+  <!-- Global layout -->
+  <link rel="stylesheet" href="pages-layout/base.css">
+
+  <!-- Page-specific styling -->
+  <link rel="stylesheet" href="pages-layout/user-profile.css">
 </head>
+
 <body>
-<header>
-<h1><a href="page1.html">Discoverly</a></h1>
-<nav>
-<a href="hub.html">Plan Your Trip</a>
-<a href="about.html">About</a>
-<a href="#">Log Out</a>
-</nav>
-</header>
+<div class="site-wrapper">
 
-<main>
-<div class="profile-header">
-<div class="profile-pic">JD</div>
-<div class="profile-info">
-<h2>Jane Doe</h2>
-<p>jane.doe@email.com</p>
-<div class="profile-stats">
-<div class="stat">
-<span class="stat-number">5</span>
-<span class="stat-label">Saved Places</span>
-</div>
-<div class="stat">
-<span class="stat-number">3</span>
-<span class="stat-label">Reviews</span>
-</div>
-<div class="stat">
-<span class="stat-number">2</span>
-<span class="stat-label">Visited</span>
-</div>
-</div>
-<button class="btn-edit">Edit Profile</button>
-</div>
-</div>
+  <header>
+    <h1><a href="page1.html">Discoverly</a></h1>
+    <nav>
+      <a href="hub.html">Plan Your Trip</a>
+      <a href="about.html">About</a>
+      <a href="#">Log Out</a>
+    </nav>
+  </header>
 
-<div class="section">
-<div class="section-header">
-<h3 class="section-title">My Want to Visit List</h3>
-<a href="#" class="view-all">View All →</a>
-</div>
-<div class="saved-grid">
-<div class="saved-card">
-<button class="btn-remove">×</button>
-<img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400" alt="Castle Hill" class="saved-image">
-<div class="saved-content">
-<h3>Castle Hill</h3>
-<p>Historic Sight</p>
-</div>
-</div>
+  <main>
 
-<div class="saved-card">
-<button class="btn-remove">×</button>
-<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400" alt="Alchemist Café" class="saved-image">
-<div class="saved-content">
-<h3>The Alchemist's Café</h3>
-<p>Café</p>
-</div>
-</div>
+    <div class="profile-header">
+      <div class="profile-pic">JD</div>
+      <div class="profile-info">
+        <h2>Jane Doe</h2>
+        <p>jane.doe@email.com</p>
 
-<div class="saved-card">
-<button class="btn-remove">×</button>
-<img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400" alt="Wine Tour" class="saved-image">
-<div class="saved-content">
-<h3>Wine Cellar Tour</h3>
-<p>Activity</p>
-</div>
-</div>
+        <div class="profile-stats">
+          <div class="stat">
+            <span class="stat-number">5</span>
+            <span class="stat-label">Saved Places</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Reviews</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Visited</span>
+          </div>
+        </div>
 
-<div class="saved-card">
-<button class="btn-remove">×</button>
-<img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Gardens" class="saved-image">
-<div class="saved-content">
-<h3>Monastery Gardens</h3>
-<p>Park</p>
-</div>
-</div>
+        <button class="btn-edit">Edit Profile</button>
+      </div>
+    </div>
 
-<div class="saved-card">
-<button class="btn-remove">×</button>
-<img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400" alt="Bridge" class="saved-image">
-<div class="saved-content">
-<h3>Dragon Bridge</h3>
-<p>Historic Sight</p>
-</div>
-</div>
-</div>
-</div>
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">My Want to Visit List</h3>
+        <a href="#" class="view-all">View All →</a>
+      </div>
 
-<div class="section">
-<div class="section-header">
-<h3 class="section-title">Plan My Route</h3>
-</div>
-<div class="route-planner">
-<p class="route-instruction">Select places from your list to create an optimized route</p>
-<div class="selected-places">
-<div class="selected-item">
-<span>Castle Hill</span>
-<button class="btn-remove-small">×</button>
-</div>
-<div class="selected-item">
-<span>The Alchemist's Café</span>
-<button class="btn-remove-small">×</button>
-</div>
-<div class="selected-item">
-<span>Dragon Bridge</span>
-<button class="btn-remove-small">×</button>
-</div>
-</div>
-<button class="btn-optimize">Optimize My Route</button>
-<div class="route-result" style="display: none;">
-<h4>Your Optimized Route:</h4>
-<div class="route-steps">
-<div class="route-step">
-<span class="step-number">1</span>
-<span class="step-name">Dragon Bridge</span>
-<span class="step-time">Start here</span>
-</div>
-<div class="route-arrow">↓ 5 min walk</div>
-<div class="route-step">
-<span class="step-number">2</span>
-<span class="step-name">The Alchemist's Café</span>
-<span class="step-time">Stop for coffee</span>
-</div>
-<div class="route-arrow">↓ 15 min walk or bus #7</div>
-<div class="route-step">
-<span class="step-number">3</span>
-<span class="step-name">Castle Hill</span>
-<span class="step-time">End here with sunset views</span>
-</div>
-</div>
-<div class="route-map">
-<div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); height: 300px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #666;">
-Map showing optimized route will appear here
-</div>
-</div>
-</div>
-</div>
-</div>
+      <div class="saved-grid">
 
-<div class="section">
-<div class="section-header">
-<h3 class="section-title">My Reviews</h3>
-</div>
-<div class="reviews-list">
-<div class="review-card">
-<div class="review-header">
-<a href="#" class="review-place">The Alchemist's Café</a>
-<div class="review-rating">★★★★★</div>
-</div>
-<p class="review-text">Amazing hidden gem! The hot chocolate is the best I've ever had, and the cozy cellar atmosphere makes it perfect for a rainy afternoon. Highly recommend the apple strudel too!</p>
-<span class="review-date">2 weeks ago</span>
-</div>
+        <div class="saved-card">
+          <button class="btn-remove">×</button>
+          <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400" class="saved-image" alt="Castle Hill">
+          <div class="saved-content">
+            <h3>Castle Hill</h3>
+            <p>Historic Sight</p>
+          </div>
+        </div>
 
-<div class="review-card">
-<div class="review-header">
-<a href="#" class="review-place">Castle Hill</a>
-<div class="review-rating">★★★★☆</div>
-</div>
-<p class="review-text">Beautiful views and fascinating history. The climb up is worth it! Gets quite crowded during sunset though. Go early morning for the best experience.</p>
-<span class="review-date">1 month ago</span>
-</div>
+        <div class="saved-card">
+          <button class="btn-remove">×</button>
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400" class="saved-image" alt="Alchemist Café">
+          <div class="saved-content">
+            <h3>The Alchemist's Café</h3>
+            <p>Café</p>
+          </div>
+        </div>
 
-<div class="review-card">
-<div class="review-header">
-<a href="#" class="review-place">Sunday Flea Market</a>
-<div class="review-rating">★★★★★</div>
-</div>
-<p class="review-text">Love this market! Found some amazing vintage finds and the local crafts are beautiful. Great atmosphere and friendly vendors. Don't miss it if you're in town on Sunday!</p>
-<span class="review-date">3 months ago</span>
-</div>
-</div>
-</div>
-</main>
+        <div class="saved-card">
+          <button class="btn-remove">×</button>
+          <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400" class="saved-image" alt="Wine Tour">
+          <div class="saved-content">
+            <h3>Wine Cellar Tour</h3>
+            <p>Activity</p>
+          </div>
+        </div>
 
+        <div class="saved-card">
+          <button class="btn-remove">×</button>
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" class="saved-image" alt="Gardens">
+          <div class="saved-content">
+            <h3>Monastery Gardens</h3>
+            <p>Park</p>
+          </div>
+        </div>
+
+        <div class="saved-card">
+          <button class="btn-remove">×</button>
+          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400" class="saved-image" alt="Bridge">
+          <div class="saved-content">
+            <h3>Dragon Bridge</h3>
+            <p>Historic Sight</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Plan My Route</h3>
+      </div>
+
+      <div class="route-planner">
+        <p class="route-instruction">Select places from your list to create an optimized route</p>
+
+        <div class="selected-places">
+
+          <div class="selected-item">
+            <span>Castle Hill</span>
+            <button class="btn-remove-small">×</button>
+          </div>
+
+          <div class="selected-item">
+            <span>The Alchemist's Café</span>
+            <button class="btn-remove-small">×</button>
+          </div>
+
+          <div class="selected-item">
+            <span>Dragon Bridge</span>
+            <button class="btn-remove-small">×</button>
+          </div>
+
+        </div>
+
+        <button class="btn-optimize">Optimize My Route</button>
+
+        <div class="route-result" style="display: none;">
+
+          <h4>Your Optimized Route:</h4>
+
+          <div class="route-steps">
+
+            <div class="route-step">
+              <span class="step-number">1</span>
+              <span class="step-name">Dragon Bridge</span>
+              <span class="step-time">Start here</span>
+            </div>
+
+            <div class="route-arrow">↓ 5 min walk</div>
+
+            <div class="route-step">
+              <span class="step-number">2</span>
+              <span class="step-name">The Alchemist's Café</span>
+              <span class="step-time">Stop for coffee</span>
+            </div>
+
+            <div class="route-arrow">↓ 15 min walk or bus #7</div>
+
+            <div class="route-step">
+              <span class="step-number">3</span>
+              <span class="step-name">Castle Hill</span>
+              <span class="step-time">End here with sunset views</span>
+            </div>
+
+          </div>
+
+          <div class="route-map">
+            <div class="route-map-placeholder">
+              Map showing optimized route will appear here
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">My Reviews</h3>
+      </div>
+
+      <div class="reviews-list">
+
+        <div class="review-card">
+          <div class="review-header">
+            <a href="#" class="review-place">The Alchemist's Café</a>
+            <div class="review-rating">★★★★★</div>
+          </div>
+          <p class="review-text">
+            Amazing hidden gem! The hot chocolate is the best I've ever had, 
+            and the cozy cellar atmosphere makes it perfect for a rainy afternoon.
+            Highly recommend the apple strudel too!
+          </p>
+          <span class="review-date">2 weeks ago</span>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <a href="#" class="review-place">Castle Hill</a>
+            <div class="review-rating">★★★★☆</div>
+          </div>
+          <p class="review-text">
+            Beautiful views and fascinating history. The climb up is worth it! 
+            Gets quite crowded during sunset though. Go early morning for the best experience.
+          </p>
+          <span class="review-date">1 month ago</span>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <a href="#" class="review-place">Sunday Flea Market</a>
+            <div class="review-rating">★★★★★</div>
+          </div>
+          <p class="review-text">
+            Love this market! Found some amazing vintage finds and the local crafts are beautiful. 
+            Great atmosphere and friendly vendors. Don't miss it if you're in town on Sunday!
+          </p>
+          <span class="review-date">3 months ago</span>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+</div>
 </body>
 </html>

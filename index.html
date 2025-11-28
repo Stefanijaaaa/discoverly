@@ -4,136 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Discoverly</title>
-  <style>
-    :root {
-      --bg-color: #f9f6f1;
-      --text-color: #2d2d2d;
-      --accent-color: #1e3a5f;
-      --card-bg: #ffffff;
-      --shadow: rgba(0,0,0,0.05);
-    }
 
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
+  <!-- Global shared layout -->
+  <link rel="stylesheet" href="pages-layout/base.css">
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 4rem;
-    }
-
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent-color);
-    }
-
-    nav a {
-      margin-left: 2rem;
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 3rem auto;
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    main h2 {
-      font-size: 2.2rem;
-      color: var(--accent-color);
-      margin-bottom: 1rem;
-    }
-
-    main p {
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      color: #555;
-    }
-
-    .btn-primary {
-      background-color: var(--accent-color);
-      color: white;
-      padding: 0.8rem 1.6rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background-color: #25497a;
-    }
-
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .card {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 8px var(--shadow);
-      overflow: hidden;
-      text-align: left;
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 1.2rem;
-    }
-
-    .card-content h3 {
-      margin: 0 0 0.5rem;
-      color: var(--accent-color);
-      font-size: 1.2rem;
-    }
-
-    .card-content p {
-      margin: 0;
-      color: #444;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        margin-top: 0.5rem;
-      }
-    }
-  </style>
+  <!-- Page-specific homepage styling -->
+  <link rel="stylesheet" href="pages-layout/index.css">
 </head>
+
 <body>
+<div class="site-wrapper">
+
   <header>
     <h1>Discoverly</h1>
     <nav>
@@ -143,8 +24,9 @@
   </header>
 
   <main>
-    <h2>Discover Hidden Gems in Town Name</h2>
-    <p>Explore the best of your town with our guide to lesser-known attractions, cozy spots, and local favorites.</p>
+    <h2 class="home-title">Discover Hidden Gems in Town Name</h2>
+    <p class="home-subtitle">Explore the best of your town with our guide to lesser-known attractions, cozy spots, and local favorites.</p>
+    
     <button class="btn-primary">Get Started</button>
 
     <div class="card-container">
@@ -171,10 +53,74 @@
           <p>A lesser-known landmark with rich history and architectural beauty.</p>
         </div>
       </div>
-
-      
     </div>
   </main>
-  <script src="index.js"></script>
+
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discoverly</title>
+
+  <!-- Global shared layout -->
+  <link rel="stylesheet" href="pages-layout/base.css">
+
+  <!-- Page-specific homepage styling -->
+  <link rel="stylesheet" href="pages-layout/index.css">
+</head>
+
+<body>
+<div class="site-wrapper">
+
+  <header>
+    <h1>Discoverly</h1>
+    <nav>
+      <a href="login.html">Log In</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="home-title">Discover Hidden Gems in Town Name</h2>
+    <p class="home-subtitle">Explore the best of your town with our guide to lesser-known attractions, cozy spots, and local favorites.</p>
+    
+    <button class="btn-primary">Get Started</button>
+
+    <div class="card-container">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Quaint Café">
+        <div class="card-content">
+          <h3>Quaint Café</h3>
+          <p>A cozy spot known for its artisanal coffee and homemade pastries.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Hidden Park">
+        <div class="card-content">
+          <h3>Hidden Park</h3>
+          <p>A tranquil park with shaded trails and hidden benches.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Historic Site">
+        <div class="card-content">
+          <h3>Historic Site</h3>
+          <p>A lesser-known landmark with rich history and architectural beauty.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script src="index.js"></script>
 </body>
 </html>
