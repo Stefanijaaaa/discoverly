@@ -33,7 +33,7 @@ CREATE TABLE Review (
     rating INT,
 
     CONSTRAINT fk_review_user
-        FOREIGN KEY (userID) REFERENCES User(userID)
+        FOREIGN KEY (userID) REFERENCES Users(userID)
         ON DELETE CASCADE,
 
     CONSTRAINT fk_review_place
@@ -48,7 +48,7 @@ CREATE TABLE Wishlist (
     PRIMARY KEY (userID, placeID),
 
     CONSTRAINT fk_wishlist_user
-        FOREIGN KEY (userID) REFERENCES User(userID)
+        FOREIGN KEY (userID) REFERENCES Users(userID)
         ON DELETE CASCADE,
 
     CONSTRAINT fk_wishlist_place
