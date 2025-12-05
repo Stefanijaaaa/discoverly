@@ -2,34 +2,34 @@ CREATE DATABASE discoverly;
 
 USE discoverly;
 
-CREATE TABLE User (
+CREATE TABLE Users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    password VARCHAR(50) NOT NULL
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Place (
     placeID INT AUTO_INCREMENT PRIMARY KEY,
     type VARCHAR(50),
-    name VARCHAR(50),
+    name VARCHAR(100),
     location INT,
     about VARCHAR(900),
-    address VARCHAR(50),
-    hours VARCHAR(50),
+    address VARCHAR(200),
+    hours VARCHAR(100),
     price INT,
-    contact CHAR(9),
-    website VARCHAR(50),
-    accessibility VARCHAR(50),
+    contact VARCHAR(50),
+    website VARCHAR(500),
+    accessibility VARCHAR(100),
     duration INT,
-    photos VARCHAR(500)
+    photos VARCHAR(1000)
 );
 
 CREATE TABLE Review (
     reviewID INT AUTO_INCREMENT PRIMARY KEY,
     userID INT NOT NULL,
     placeID INT NOT NULL,
-    comment VARCHAR(120),
+    comment VARCHAR(200),
     rating INT,
 
     CONSTRAINT fk_review_user
