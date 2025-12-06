@@ -1,0 +1,197 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Places to Visit - Discoverly</title>
+<link rel="stylesheet" href="../Style/places.css">
+</head>
+<body>
+<header>
+<h1>Discoverly</h1>
+<nav>
+        <a href="../index.php">Home</a>
+        <a href="about.php">About</a>
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="user-profile.php">My Profile</a>
+            <a href="../Scripts/logout.php" class="logout-btn">Logout</a>
+        <?php else: ?>
+            <a href="login.php">Login</a>
+         
+        <?php endif; ?>
+    </nav>
+</header>
+
+<main>
+<div class="page-title">
+<h2>Places to Visit</h2>
+<p>Discover the best spots in town</p>
+</div>
+
+<div class="search-section">
+<input type="text" class="search-bar" placeholder="Search places..." id="search-bar" onkeyup="search()">
+</div>
+
+<div class="categories" id="myBtnContainer">
+<button class="category-btn active" onclick="filterSelection('all')"> Show all</button>
+<button class="category-btn" onclick="filterSelection('restaurants')">Restaurants</button>
+<button class="category-btn" onclick="filterSelection('cafes')">Cafes</button>
+<button class="category-btn" onclick="filterSelection('historic-sights')">Historic Sights</button>
+<button class="category-btn" onclick="filterSelection('museums')">Museums</button>
+<button class="category-btn" onclick="filterSelection('parks')">Parks</button>
+</div>
+
+  
+
+
+<div class="places-grid">
+<!-- Restaurants -->
+<a href="place-detail.html" class="place-card filterDiv restaurants show" data-category="restaurant">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600" alt="Traditional Tavern" class="place-image">
+<div class="place-content">
+<h3>The Old Town Tavern</h3>
+<p>Family-run restaurant serving traditional dishes for three generations.</p>
+<span class="place-category">Restaurant</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv restaurants show" data-category="restaurant">
+<img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600" alt="Modern Bistro" class="place-image">
+<div class="place-content">
+<h3>River View Bistro</h3>
+<p>Contemporary cuisine with stunning riverside seating and seasonal menu.</p>
+<span class="place-category">Restaurant</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv restaurants show" data-category="restaurant">
+<img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600" alt="Cozy Restaurant" class="place-image">
+<div class="place-content">
+<h3>Grandma's Kitchen</h3>
+<p>Homestyle cooking in a warm atmosphere. Known for their legendary goulash.</p>
+<span class="place-category">Restaurant</span>
+</div>
+</a>
+
+<!-- Cafés -->
+<a href="place-detail.html" class="place-card filterDiv cafes show" data-category="cafe">
+<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600" alt="Alchemist Café" class="place-image">
+<div class="place-content">
+<h3>The Alchemist's Café</h3>
+<p>Cozy cellar café famous for homemade pastries and artisan hot chocolate.</p>
+<span class="place-category">Café</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv cafes show" data-category="cafe">
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600" alt="Modern Café" class="place-image">
+<div class="place-content">
+<h3>Brew & Pages</h3>
+<p>Bookshop café with specialty coffee and quiet reading corners.</p>
+<span class="place-category">Café</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv cafes show" data-category="cafe">
+<img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600" alt="Riverside Café" class="place-image">
+<div class="place-content">
+<h3>Riverside Roasters</h3>
+<p>Waterfront café roasting their own beans. Perfect for morning walks.</p>
+<span class="place-category">Café</span>
+</div>
+</a>
+
+<!-- Historic Sights -->
+<a href="place-detail.html" class="place-card filterDiv historic-sights show" data-category="historic">
+<img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600" alt="Castle" class="place-image">
+<div class="place-content">
+<h3>Castle Hill</h3>
+<p>Medieval fortress overlooking the town with panoramic views and museum.</p>
+<span class="place-category">Historic Sight</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv historic-sights show" data-category="historic">
+<img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600" alt="Dragon Bridge" class="place-image">
+<div class="place-content">
+<h3>Dragon Bridge</h3>
+<p>Iconic Art Nouveau bridge adorned with dragon statues and local legends.</p>
+<span class="place-category">Historic Sight</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv historic-sights show" data-category="historic">
+<img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=600" alt="Old Church" class="place-image">
+<div class="place-content">
+<h3>St. Nicholas Cathedral</h3>
+<p>13th century cathedral with stunning baroque interiors and bell tower views.</p>
+<span class="place-category">Historic Sight</span>
+</div>
+</a>
+
+<!-- Museums -->
+<a href="place-detail.html" class="place-card filterDiv museums show" data-category="museum">
+<img src="https://images.unsplash.com/photo-1565098772267-60af42b81ef2?w=600" alt="Art Museum" class="place-image">
+<div class="place-content">
+<h3>National Gallery</h3>
+<p>Extensive collection of local and international art from medieval to modern.</p>
+<span class="place-category">Museum</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv museums show" data-category="museum">
+<img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=600" alt="History Museum" class="place-image">
+<div class="place-content">
+<h3>City History Museum</h3>
+<p>Interactive exhibits showcasing the town's evolution through centuries.</p>
+<span class="place-category">Museum</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv museums show" data-category="museum">
+<img src="https://images.unsplash.com/photo-1578672899664-c5c9c2b2cde4?w=600" alt="Contemporary Museum" class="place-image">
+<div class="place-content">
+<h3>Museum of Contemporary Art</h3>
+<p>Cutting-edge exhibitions featuring local and international contemporary artists.</p>
+<span class="place-category">Museum</span>
+</div>
+</a>
+
+<!-- Parks -->
+<a href="place-detail.html" class="place-card filterDiv parks show" data-category="park">
+<img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Monastery Gardens" class="place-image">
+<div class="place-content">
+<h3>Monastery Gardens</h3>
+<p>Hidden botanical gardens with rare herbs and peaceful meditation labyrinth.</p>
+<span class="place-category">Park</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv parks show" data-category="park">
+<img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600" alt="Central Park" class="place-image">
+<div class="place-content">
+<h3>Central Park</h3>
+<p>Large urban park with walking paths, pond, and weekend outdoor concerts.</p>
+<span class="place-category">Park</span>
+</div>
+</a>
+
+<a href="place-detail.html" class="place-card filterDiv parks show" data-category="park">
+<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600" alt="River Walk" class="place-image">
+<div class="place-content">
+<h3>River Walk Promenade</h3>
+<p>Scenic riverside path lined with willow trees, perfect for morning strolls.</p>
+<span class="place-category">Park</span>
+</div>
+</a>
+</div>
+</main>
+<script src="filter-search.js"></script>
+</body>
+
+
+</html>
