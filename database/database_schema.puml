@@ -4,50 +4,54 @@ skinparam classAttributeIconSize 0
 hide circle
 skinparam linetype ortho
 
-
-entity User {
-    userID: integer() <<PK>>
+entity Users {
+    userID: integer <<PK>>
     ---
-    username: varchar(50)
-    email: varchar(100)
-    password: varchar(50)
+    username: varchar(100)
+    email: varchar(200)
+    password: varchar(300)
 }
 
 entity Place {
-    placeId: integer() <<PK>>
-    reviewID: integer() <<FK>>
+    placeID: integer <<PK>>
+    userID: integer <<FK>>
     ---
-    type: varchar(50)
-    name: varchar(50)
-    location: integer() 
-    about: varchar (900)
-    address: varchar(50)
-    hours: varchar(50)
-    price: integer()
-    contact: char(9)
-    website: varchar(50)
-    accessibility: varchar(50)
-    duration: integer()
-    photos: varchar(500)
+    type: varchar(100)
+    name: varchar(200)
+    location: varchar(300)
+    about: varchar(1500)
+    address: varchar(300)
+    hours: varchar(300)
+    price: varchar(100)
+    contact: varchar(300)
+    website: varchar(500)
+    accessibility: varchar(300)
+    duration: integer
+    photos: varchar(2000)
+    latitude: decimal(9,6)
+    longitude: decimal(9,6)
 }
 
-entity Review{
-    reviewID: integer() <<PK>>
-    userID: integer() <<FK>>
-    placeID: integer() <<FK>>
+entity Review {
+    reviewID: integer <<PK>>
+    userID: integer <<FK>>
+    placeID: integer <<FK>>
     ---
-    comment: varchar(120)
-    rating: integer()
+    comment: varchar(500)
+    rating: integer
+    created_at: timestamp
 }
 
-entity Wishlist{
-    userID: integer() <<PK, FK>>
-    placeID: integer() <<PK, FK>>
+entity Wishlist {
+    wishlistID: integer <<PK>>
+    userID: integer <<FK>>
+    placeID: integer <<FK>>
     ---
+    created_at: timestamp
 }
 
-User ||--o{ Review : "writes"
+Users ||--o{ Review : "writes"
 Place ||--o{ Review : "receives"
-User ||--o{ Wishlist : "saves to"
+Users ||--o{ Wishlist : "saves to"
 Wishlist }o--|| Place : "is saved to"
 
