@@ -1,19 +1,52 @@
 function showLoginModal() {
+    if (logged){
+    document.getElementById('reviewForm').style.display = 'block';
+    }
+    else{
     document.getElementById('loginModal').classList.add('show');
+    }
 }
     
 function hideLoginModal() {
     document.getElementById('loginModal').classList.remove('show');
 }
 
-var map = L.map('map').setView([51.505, -0.09], 13);
+function hideReviewForm(){
+    document.getElementById('reviewForm').style.display = 'none'
+}
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+async function submitReview() {
+    let review = document.getElementById("reviewText").value.trim();
 
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS popup.<br> Easily customizable.')
-    .openPopup();
+    if (review === "") {
+        alert("Write something before submitting");
+        return;
+    }
 
-// https://leafletjs.com/examples/quick-start/ -> tutorial for the map, will need to add exact locations 
+    try {
+        const res = await fetch('http://127.0.0.1:5000/api/reviews', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({
+                placeID: placeId,
+                comment: review,
+                rating: 5
+            })
+        });
+
+        if (!res.ok) {
+            alert("Failed to submit review");
+            return;
+        }
+
+        alert("Review submitted!");
+        document.getElementById("reviewText").value = "";
+    } catch (e) {
+        alert("Error sending review");
+    }
+}
+
+
+
+

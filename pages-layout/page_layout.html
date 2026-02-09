@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Castle Hill - Discoverly</title>
+<title>Discoverly</title>
 <style>
 :root {
 --bg-color: #f9f6f1;
@@ -97,8 +97,7 @@ grid-template-columns: 1fr 1fr;
 gap: 2rem;
 margin-bottom: 3rem;
 }
-.map-section {
-}
+
 .map-card {
 background-color: var(--card-bg);
 border-radius: 12px;
@@ -184,22 +183,7 @@ font-size: 1.2rem;
 color: var(--accent-color);
 margin-bottom: 1rem;
 }
-.sidebar {
-display: flex;
-flex-direction: column;
-gap: 2rem;
-}
-.sidebar-card {
-background-color: var(--card-bg);
-border-radius: 12px;
-padding: 1.5rem;
-box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-.sidebar-card h3 {
-font-size: 1.2rem;
-color: var(--accent-color);
-margin-bottom: 1rem;
-}
+
 .reviews-section {
 background-color: var(--card-bg);
 border-radius: 12px;
@@ -389,8 +373,10 @@ font-size: 2rem;
 <header>
 <h1><a href="../page1.html">Discoverly</a></h1>
 <nav>
-<a href="../login.html">Log In</a>
+<a href="../user-profile.html" id="profile-link" style="display: none;">My Profile</a>
+<a href="../login.html" id="auth-link">Log In</a>
 <a href="../about.html">About</a>
+</nav>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
 crossorigin=""/>
@@ -400,13 +386,13 @@ crossorigin=""/>
 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 crossorigin=""></script>
 
-<img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1600" alt="Castle Hill" class="hero-image">
+<img src="" alt="Place image" class="hero-image">
 
 <main>
 <div class="detail-header">
 <div class="title-section">
-<h2>Castle Hill</h2>
-<span class="category-tag">Historic Sight</span>
+<h2 id="place-name" ></h2>
+<span class="category-tag" id="place-type" ></span>
 </div>
 <button class="btn-save" onclick="showLoginModal()">Add to My List</button>
 </div>
@@ -415,7 +401,6 @@ crossorigin=""></script>
 <div class="map-section">
 <div class="map-card">
 <h3>Location</h3>
-<p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Castle Hill Road 1, Old Town</p>
 <div id="map">
 </div>
 </div>
@@ -424,35 +409,35 @@ crossorigin=""></script>
 <div class="info-side">
 <div class="info-section">
 <h3>About</h3>
-<p>A stunning medieval fortress perched atop the highest hill in the old town, Castle Hill offers breathtaking panoramic views of the entire city and surrounding countryside. Originally built in the 13th century as a defensive stronghold, the castle has been meticulously preserved and now houses a fascinating museum showcasing the region's rich history.</p>
-<p>Visitors can explore the castle's towers, walk along the ancient ramparts, and discover hidden courtyards. The on-site museum features archaeological finds, medieval weapons, and interactive exhibits that bring history to life.</p>
+<p id="place-about" ></p>
+
 </div>
 
 <div class="info-section">
 <h3>Quick Info</h3>
 <div class="info-item">
 <span class="info-icon"></span>
-<span><strong>Address:</strong> Castle Hill Road 1, Old Town</span>
+<span><strong>Address:</strong> <span id="place-address"></span></span>
 </div>
 <div class="info-item">
 <span class="info-icon"></span>
-<span><strong>Hours:</strong> Daily 9:00 AM - 6:00 PM (Apr-Oct), 10:00 AM - 4:00 PM (Nov-Mar)</span>
+<span><strong>Hours:</strong> <span id="place-hours"></span></span>
 </div>
 <div class="info-item">
 <span class="info-icon"></span>
-<span><strong>Price:</strong> €12 adults, €6 students, Free under 12</span>
+<span><strong>Price:</strong> <span id="place-price"></span></span>
+</div>
+<div class="info-item" id="place-contact-item">
+<span class="info-icon"></span>
+<span><strong>Contact:</strong> <span id="place-contact"></span></span>
+</div>
+<div class="info-item" id="place-website-item">
+<span class="info-icon"></span>
+<span><strong>Website:</strong> <span id="place-website"></span></span>
 </div>
 <div class="info-item">
 <span class="info-icon"></span>
-<span><strong>Contact:</strong> +386 1 234 5678</span>
-</div>
-<div class="info-item">
-<span class="info-icon"></span>
-<span><strong>Website:</strong> <a href="#" style="color: var(--accent-color);">www.castlehill.com</a></span>
-</div>
-<div class="info-item">
-<span class="info-icon"></span>
-<span><strong>Accessibility:</strong> Partial wheelchair access, elevator to main courtyard</span>
+<span><strong>Accessibility:</strong><span id="place-accessibility"></span></span>
 </div>
 <div class="info-item">
 <span class="info-icon"></span>
@@ -460,7 +445,7 @@ crossorigin=""></script>
 </div>
 <div class="info-item">
 <span class="info-icon"></span>
-<span><strong>Duration:</strong> Allow 2-3 hours</span>
+<span><strong>Duration:</strong><span id="place-duration"></span></span>
 </div>
 </div>
 </div>
@@ -490,6 +475,12 @@ crossorigin=""></script>
 </div>
 </div>
 <button class="btn-review" onclick="showLoginModal()">Leave a Review</button>
+<div id="reviewForm" style="display: none;">
+    <textarea id="reviewText" placeholder="Write your review here..."></textarea>
+    <button onclick="submitReview()">Submit</button>
+    <button onclick="hideReviewForm()">Cancel</button>
+</div>
+
 </div>
 
 <div class="review-list">
@@ -498,27 +489,10 @@ crossorigin=""></script>
 <span class="reviewer-name">Maria Santos</span>
 <span class="review-rating">★★★★★</span>
 </div>
-<p class="review-text">Absolutely breathtaking! The views from the top are worth every step of the climb. The museum inside is also fascinating with great exhibits about the castle's history. Highly recommend visiting at sunset for the most magical experience.</p>
+<p class="review-text">WOW!.</p>
 <span class="review-date">2 weeks ago</span>
 </div>
 
-<div class="review-item">
-<div class="review-header-item">
-<span class="reviewer-name">John Peterson</span>
-<span class="review-rating">★★★★☆</span>
-</div>
-<p class="review-text">Beautiful castle with stunning views of the city. The climb up is a bit steep but manageable. The museum was interesting though could use some more interactive elements. Gets quite crowded during peak hours so arrive early!</p>
-<span class="review-date">1 month ago</span>
-</div>
-
-<div class="review-item">
-<div class="review-header-item">
-<span class="reviewer-name">Emma Chen</span>
-<span class="review-rating">★★★★★</span>
-</div>
-<p class="review-text">One of the highlights of our trip! The medieval architecture is incredibly well-preserved and the panoramic views are spectacular. The staff was very knowledgeable and friendly. Don't miss the hidden garden on the east side!</p>
-<span class="review-date">2 months ago</span>
-</div>
 </div>
 </div>
 </main>
@@ -528,13 +502,15 @@ crossorigin=""></script>
 <h3>Login Required</h3>
 <p>Please log in to save places to your list and leave reviews</p>
 <div class="modal-buttons">
-<a href="login.html" class="btn-modal btn-login">Log In</a>
+<a href="../login.html" class="btn-modal btn-login">Log In</a>
 <button class="btn-modal btn-cancel" onclick="hideLoginModal()">Cancel</button>
 </div>
 </div>
 </div>
 
 <script src="page_layout.js"></script>
+<script src="place.js"></script>
+<script src="../auth.js"></script>
 
 </body>
 </html>
