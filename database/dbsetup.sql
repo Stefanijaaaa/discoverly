@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS discoverly;
+
 CREATE DATABASE discoverly;
 
 USE discoverly;

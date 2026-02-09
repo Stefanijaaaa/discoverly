@@ -1,7 +1,7 @@
 USE discoverly;
 
 INSERT INTO Users (username, email, password) 
-VALUES ('testuser', 'test@example.com', 'hashed_password_here');
+VALUES ('testuser', 'test@example.com', 'test123');
 
 INSERT INTO Place (
     userID, type, name, location, about, address, hours, 
@@ -244,3 +244,6 @@ INSERT INTO Review (userID, placeID, comment, rating) VALUES
 (1, 7, 'A must-visit place!', 5),
 (1, 10, 'Beautiful art collection', 4),
 (1, 13, 'So peaceful and relaxing', 5);
+
+
+
